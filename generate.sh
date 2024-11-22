@@ -6,11 +6,13 @@ BOOKS_DIR="/data"
 # Iterate over each directory in the books directory
 for dir in "$BOOKS_DIR"/*/; do
   if [ -d "$dir" ]; then
+    if [ "$(basename $dir)" = "epub" ]; then
+        echo "Ignoring EPUB directory: $dir"
+        continue
+    fi
     echo "Generating EPUB for directory: $dir"
-    # Replace the following line with the actual command to generate EPUB
-    # For example, you might use a tool like pandoc or calibre
     cd $dir
-    pandoc -o /data/epub/$dir.epub metadata.yaml *.md
+    pandoc -o /data/epub/$(basename $dir).epub $dir/metadata.yaml $dir/*.md
     cd "$OLDPWD"
   fi
 done
