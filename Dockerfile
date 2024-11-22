@@ -18,12 +18,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install additional Python packages if needed
-RUN pip install --no-cache-dir ebook-convert
 ADD generate.sh /
-
-# Set the working directory
-WORKDIR /data
+RUN chmod ugo+x /generate.sh
 
 # Command to keep the container running
 CMD ["/generate.sh"]

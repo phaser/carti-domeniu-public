@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   ebook-generator:
     build: .
@@ -7,4 +5,3 @@ services:
     container_name: ebook_generator
     volumes:
       - ./books:/data
-    command: bash
