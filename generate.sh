@@ -12,7 +12,7 @@ for dir in "$BOOKS_DIR"/*/; do
     fi
     echo "Generating EPUB for directory: $dir"
     cd $dir
-    pandoc -o /data/epub/$(basename $dir).epub $dir/metadata.yaml $dir/*.md
+    pandoc -o "/data/epub/$(basename $dir).epub" "$dir/metadata.yaml" $dir/*.md
     cd "$OLDPWD"
   fi
 done
